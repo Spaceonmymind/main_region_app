@@ -1,0 +1,131 @@
+{
+  "channels": [],
+  "categories": [
+    {
+      "id": "housing",
+      "name": "Дом и ЖКХ",
+      "icon": "housing.png",
+      "show_on_main": true
+    },
+    {
+      "id": "family",
+      "name": "Семья и дети",
+      "icon": "family.png",
+      "show_on_main": true
+    },
+    {
+      "id": "transport",
+      "name": "Транспорт",
+      "icon": "transport.png",
+      "show_on_main": true
+    },
+    {
+      "id": "health",
+      "name": "Здоровье",
+      "icon": "health.png",
+      "show_on_main": true
+    },
+    {
+      "id": "culture",
+      "name": "Культура",
+      "icon": "culture.png",
+      "show_on_main": true
+    },
+    {
+      "id": "education",
+      "name": "Образование"
+    },
+    {
+      "id": "social",
+      "name": "Социальная поддержка"
+    },
+    {
+      "id": "employment",
+      "name": "Работа и занятость"
+    }
+  ],
+  "services": [
+    {
+      "id": "kurgan-region",
+      "name": "Правительство Курганской области",
+      "description": "Официальный портал органов власти Курганской области: региональные новости, документы, контакты и государственные программы.",
+      "type": "site",
+      "owner": "Правительство Курганской области",
+      "link": "https://kurganobl.ru",
+      "tags": ["Курганская область", "правительство", "власть", "новости"],
+      "category_ids": ["social", "transport"],
+      "popular": true
+    },
+    {
+      "id": "gosuslugi",
+      "name": "Госуслуги",
+      "description": "Получение государственных услуг, подача заявлений, запись в ведомства и проверка начислений.",
+      "type": "site",
+      "owner": "Министерство цифрового развития Российской Федерации",
+      "link": "https://www.gosuslugi.ru",
+      "tags": ["госуслуги", "документы", "заявление", "льготы"],
+      "category_ids": ["family", "health", "education", "social"],
+      "popular": true,
+      "federal": true
+    },
+    {
+      "id": "gis-zhkh",
+      "name": "ГИС ЖКХ",
+      "description": "Информация о доме и управляющей организации, передача показаний, оплата услуг и обращения по вопросам ЖКХ.",
+      "type": "site",
+      "owner": "Министерство строительства и ЖКХ Российской Федерации",
+      "link": "https://dom.gosuslugi.ru",
+      "tags": ["ЖКХ", "дом", "квартплата", "управляющая компания"],
+      "category_ids": ["housing"],
+      "popular": true,
+      "federal": true
+    },
+    {
+      "id": "culture-rf",
+      "name": "Культура.РФ",
+      "description": "Афиша культурных событий, материалы о музеях, театрах, выставках и достопримечательностях России.",
+      "type": "site",
+      "owner": "Министерство культуры Российской Федерации",
+      "link": "https://www.culture.ru",
+      "tags": ["афиша", "музеи", "театр", "культура"],
+      "category_ids": ["culture"],
+      "federal": true
+    },
+    {
+      "id": "work-russia",
+      "name": "Работа России",
+      "description": "Поиск вакансий, размещение резюме и получение информации о программах поддержки занятости.",
+      "type": "site",
+      "owner": "Федеральная служба по труду и занятости",
+      "link": "https://trudvsem.ru",
+      "tags": ["работа", "вакансии", "резюме", "занятость"],
+      "category_ids": ["employment"],
+      "federal": true
+    },
+    {
+      "id": "bus-schedule",
+      "name": "Расписание транспорта",
+      "description": "Тестовый переход к сервису поиска расписания междугороднего и пригородного транспорта.",
+      "type": "site",
+      "owner": "Тестовый сервис",
+      "link": "https://rasp.yandex.ru",
+      "tags": ["автобус", "расписание", "транспорт", "маршрут"],
+      "category_ids": ["transport"]
+    }
+  ],
+  "support": {
+    "chatbot": null,
+    "operator": null,
+    "techSupport": null
+  },
+  "analytics": {
+    "mytracker": {
+      "enabled": false,
+      "trackerId": ""
+    },
+    "yandexMetrika": {
+      "enabled": false,
+      "counterId": ""
+    }
+  }
+}
