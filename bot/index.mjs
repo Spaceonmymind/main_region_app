@@ -9,12 +9,6 @@ if (!token) {
   );
 }
 
-if (!miniAppUrl || miniAppUrl.includes('<имя_бота>')) {
-  throw new Error(
-    'Не задан MINI_APP_URL. Укажите диплинк вида https://max.ru/<имя_бота>?startapp.'
-  );
-}
-
 const bot = new Bot(token);
 
 const welcomeText = [
@@ -31,23 +25,27 @@ const helpText = [
   'Нажмите кнопку ниже, затем выберите категорию или найдите нужный сервис через поиск.',
 ].join('\n');
 
-const createAppKeyboard = () =>
-  Keyboard.inlineKeyboard([
-    [Keyboard.button.link('Открыть сервисы', miniAppUrl)],
-  ]);
+const createReplyOptions = () => {
+  if (!miniAppUrl || miniAppUrl.includes('<имя_бота>')) {
+    return {};
+  }
 
-const sendWelcome = (ctx) =>
-  ctx.reply(welcomeText, {
-    attachments: [createAppKeyboard()],
-  });
+  return {
+    attachments: [
+      Keyboard.inlineKeyboard([
+        [Keyboard.button.link('Открыть сервисы', miniAppUrl)],
+      ]),
+    ],
+  };
+};
+
+const sendWelcome = (ctx) => ctx.reply(welcomeText, createReplyOptions());
 
 bot.on('bot_started', sendWelcome);
 bot.command('start', sendWelcome);
 
 bot.on('message_created', (ctx) =>
-  ctx.reply(helpText, {
-    attachments: [createAppKeyboard()],
-  })
+  ctx.reply(helpText, createReplyOptions())
 );
 
 bot.start();
