@@ -1,8 +1,25 @@
+import { readFile, stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
+import { extname, resolve, sep } from 'node:path';
 
 const HOST = '0.0.0.0';
 const DEFAULT_PORT = 3001;
 const MAX_BODY_SIZE_BYTES = 1024 * 1024;
+const MIME_TYPES = {
+  '.css': 'text/css; charset=utf-8',
+  '.html': 'text/html; charset=utf-8',
+  '.jpeg': 'image/jpeg',
+  '.jpg': 'image/jpeg',
+  '.js': 'text/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.png': 'image/png',
+  '.svg': 'image/svg+xml',
+  '.ttf': 'font/ttf',
+  '.webp': 'image/webp',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+  '.zip': 'application/zip',
+};
 
 const sendJson = (response, statusCode, payload) => {
   response.writeHead(statusCode, {
@@ -50,8 +67,72 @@ const parsePort = (value) => {
   return port;
 };
 
-export const startHttpServer = ({ port = process.env.PORT } = {}) => {
+const sendFile = async (request, response, filePath) => {
+  const file = await readFile(filePath);
+  const contentType = MIME_TYPES[extname(filePath).toLowerCase()] || 'application/octet-stream';
+
+  response.writeHead(200, {
+    'Content-Type': contentType,
+    'Content-Length': file.length,
+  });
+
+  if (request.method === 'HEAD') {
+    response.end();
+    return;
+  }
+
+  response.end(file);
+};
+
+const serveMiniApp = async (request, response, pathname, publicDir) => {
+  let decodedPath;
+
+  try {
+    decodedPath = decodeURIComponent(pathname);
+  } catch {
+    sendJson(response, 400, { error: 'Invalid URL' });
+    return;
+  }
+
+  const requestedPath = decodedPath === '/' ? 'index.html' : decodedPath.replace(/^\/+/, '');
+  const filePath = resolve(publicDir, requestedPath);
+  const isInsidePublicDir = filePath === publicDir || filePath.startsWith(`${publicDir}${sep}`);
+
+  if (!isInsidePublicDir || requestedPath.split('/').some((part) => part.startsWith('.'))) {
+    sendJson(response, 404, { error: 'Not found' });
+    return;
+  }
+
+  try {
+    const fileStats = await stat(filePath);
+
+    if (fileStats.isFile()) {
+      await sendFile(request, response, filePath);
+      return;
+    }
+  } catch {
+    // Для маршрутов SPA ниже возвращается index.html.
+  }
+
+  if (!extname(requestedPath)) {
+    try {
+      await sendFile(request, response, resolve(publicDir, 'index.html'));
+      return;
+    } catch {
+      sendJson(response, 503, { error: 'Mini app build not found' });
+      return;
+    }
+  }
+
+  sendJson(response, 404, { error: 'Not found' });
+};
+
+export const startHttpServer = ({
+  port = process.env.PORT,
+  publicDir = resolve(process.cwd(), 'public'),
+} = {}) => {
   const resolvedPort = parsePort(port);
+  const resolvedPublicDir = resolve(publicDir);
 
   const server = createServer(async (request, response) => {
     const url = new URL(request.url || '/', `http://${request.headers.host || 'localhost'}`);
@@ -81,7 +162,12 @@ export const startHttpServer = ({ port = process.env.PORT } = {}) => {
       return;
     }
 
-    sendJson(response, 404, { error: 'Not found' });
+    if (request.method === 'GET' || request.method === 'HEAD') {
+      await serveMiniApp(request, response, url.pathname, resolvedPublicDir);
+      return;
+    }
+
+    sendJson(response, 405, { error: 'Method not allowed' });
   });
 
   server.listen(resolvedPort, HOST, () => {
@@ -90,4 +176,3 @@ export const startHttpServer = ({ port = process.env.PORT } = {}) => {
 
   return server;
 };
-
