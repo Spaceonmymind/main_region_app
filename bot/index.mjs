@@ -1,5 +1,7 @@
 import { Bot, Keyboard } from '@maxhub/max-bot-api';
 
+import { startHttpServer } from './http-server.mjs';
+
 const token = process.env.BOT_TOKEN?.trim();
 const miniAppUrl = process.env.MINI_APP_URL?.trim();
 
@@ -49,5 +51,6 @@ bot.on('message_created', (ctx) =>
 );
 
 bot.start();
+startHttpServer();
 
 console.log('Бот «Сервисы Курганской области» запущен');
