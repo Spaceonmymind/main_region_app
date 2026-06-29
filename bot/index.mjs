@@ -3,7 +3,8 @@ import { Bot, Keyboard } from '@maxhub/max-bot-api';
 import { startHttpServer } from './http-server.mjs';
 
 const token = process.env.BOT_TOKEN?.trim();
-const miniAppUrl = process.env.MINI_APP_URL?.trim();
+const miniAppDeeplink = process.env.MINI_APP_DEEPLINK?.trim();
+const legacyMiniAppUrl = process.env.MINI_APP_URL?.trim();
 
 if (!token) {
   throw new Error(
@@ -28,14 +29,23 @@ const helpText = [
 ].join('\n');
 
 const createReplyOptions = () => {
-  if (!miniAppUrl || miniAppUrl.includes('<имя_бота>')) {
+  const legacyMiniAppDeeplink = legacyMiniAppUrl?.startsWith('https://max.ru/')
+    ? legacyMiniAppUrl
+    : undefined;
+  const miniAppOpenUrl = miniAppDeeplink || legacyMiniAppDeeplink;
+
+  if (
+    !miniAppOpenUrl ||
+    miniAppOpenUrl.includes('<имя_бота>') ||
+    miniAppOpenUrl.includes('<botName>')
+  ) {
     return {};
   }
 
   return {
     attachments: [
       Keyboard.inlineKeyboard([
-        [Keyboard.button.link('Открыть сервисы', miniAppUrl)],
+        [Keyboard.button.link('Открыть сервисы', miniAppOpenUrl)],
       ]),
     ],
   };
