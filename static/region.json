@@ -2,27 +2,15 @@
   "channels": [],
   "categories": [
     {
-      "id": "housing",
-      "name": "Дом и ЖКХ",
-      "icon": "housing.png",
-      "show_on_main": true
-    },
-    {
-      "id": "family",
-      "name": "Семья и дети",
-      "icon": "family.png",
-      "show_on_main": true
-    },
-    {
-      "id": "transport",
-      "name": "Транспорт",
-      "icon": "transport.png",
-      "show_on_main": true
-    },
-    {
       "id": "health",
       "name": "Здоровье",
       "icon": "health.png",
+      "show_on_main": true
+    },
+    {
+      "id": "housing",
+      "name": "Дом и ЖКХ",
+      "icon": "housing.png",
       "show_on_main": true
     },
     {
@@ -36,81 +24,430 @@
       "name": "Образование"
     },
     {
-      "id": "social",
-      "name": "Социальная поддержка"
+      "id": "local-administrations",
+      "name": "Местные администрации"
     },
     {
-      "id": "employment",
-      "name": "Работа и занятость"
+      "id": "incidents",
+      "name": "Происшествия"
     }
   ],
   "services": [
     {
-      "id": "kurgan-region",
-      "name": "Правительство Курганской области",
-      "description": "Официальный портал органов власти Курганской области: региональные новости, документы, контакты и государственные программы.",
-      "type": "site",
-      "owner": "Правительство Курганской области",
-      "link": "https://kurganobl.ru",
-      "tags": ["Курганская область", "правительство", "власть", "новости"],
-      "category_ids": ["social", "transport"],
+      "id": "doctor-appointment",
+      "name": "Запись к врачу",
+      "description": "Бот для записи к врачу и получения информации по медицинским обращениям в Курганской области.",
+      "type": "chatbot",
+      "owner": "Система здравоохранения Курганской области",
+      "link": "https://max.ru/kurgan_122_max_bot",
+      "tags": ["врач", "поликлиника", "запись", "здоровье", "122"],
+      "category_ids": ["health"],
       "popular": true
     },
     {
-      "id": "gosuslugi",
-      "name": "Госуслуги",
-      "description": "Получение государственных услуг, подача заявлений, запись в ведомства и проверка начислений.",
-      "type": "site",
-      "owner": "Министерство цифрового развития Российской Федерации",
-      "link": "https://www.gosuslugi.ru",
-      "tags": ["госуслуги", "документы", "заявление", "льготы"],
-      "category_ids": ["family", "health", "education", "social"],
-      "popular": true,
-      "federal": true
+      "id": "telemedicine-consultation",
+      "name": "Запись на телемедицинскую консультацию",
+      "description": "Бот для записи на дистанционную медицинскую консультацию.",
+      "type": "chatbot",
+      "owner": "Система здравоохранения Курганской области",
+      "link": "https://max.ru/kurgan_telemed_max_bot",
+      "tags": ["телемедицина", "консультация", "врач", "здоровье"],
+      "category_ids": ["health"],
+      "popular": true
     },
     {
-      "id": "gis-zhkh",
-      "name": "ГИС ЖКХ",
-      "description": "Информация о доме и управляющей организации, передача показаний, оплата услуг и обращения по вопросам ЖКХ.",
-      "type": "site",
-      "owner": "Министерство строительства и ЖКХ Российской Федерации",
-      "link": "https://dom.gosuslugi.ru",
-      "tags": ["ЖКХ", "дом", "квартплата", "управляющая компания"],
+      "id": "health-department",
+      "name": "Департамент здравоохранения Курганской области",
+      "description": "Официальный канал Департамента здравоохранения Курганской области.",
+      "type": "channel",
+      "owner": "Департамент здравоохранения Курганской области",
+      "link": "https://max.ru/dzokurgan",
+      "tags": ["департамент", "здравоохранение", "медицина", "новости"],
+      "category_ids": ["health"]
+    },
+    {
+      "id": "housing-inspection",
+      "name": "Госжилинспекция Курганской области",
+      "description": "Официальный канал Государственной жилищной инспекции Курганской области.",
+      "type": "channel",
+      "owner": "Госжилинспекция Курганской области",
+      "link": "https://max.ru/id4501085027_gos",
+      "tags": ["жкх", "жилищная инспекция", "дом", "обращения"],
+      "category_ids": ["housing"],
+      "popular": true
+    },
+    {
+      "id": "gosuslugi-dom",
+      "name": "Госуслуги Дом",
+      "description": "Бот сервиса «Госуслуги Дом» для вопросов по дому, ЖКХ и управляющим организациям.",
+      "type": "chatbot",
+      "owner": "Госуслуги",
+      "link": "https://max.ru/gosuslugi_dom_bot",
+      "tags": ["госуслуги", "дом", "жкх", "управляющая компания"],
       "category_ids": ["housing"],
       "popular": true,
       "federal": true
     },
     {
-      "id": "culture-rf",
-      "name": "Культура.РФ",
-      "description": "Афиша культурных событий, материалы о музеях, театрах, выставках и достопримечательностях России.",
-      "type": "site",
-      "owner": "Министерство культуры Российской Федерации",
-      "link": "https://www.culture.ru",
-      "tags": ["афиша", "музеи", "театр", "культура"],
+      "id": "culture45",
+      "name": "Культура45",
+      "description": "Официальный канал о культурных событиях и проектах Курганской области.",
+      "type": "channel",
+      "owner": "Культура45",
+      "link": "https://max.ru/kultura45",
+      "tags": ["культура", "афиша", "события", "Курган"],
       "category_ids": ["culture"],
+      "popular": true
+    },
+    {
+      "id": "kurgan-museum-association",
+      "name": "Курганское областное музейное объединение",
+      "description": "Официальный канал ГАУК «Курганское областное музейное объединение».",
+      "type": "channel",
+      "owner": "ГАУК «Курганское областное музейное объединение»",
+      "link": "https://max.ru/id4501005448_gos",
+      "tags": ["музей", "культура", "выставки", "история"],
+      "category_ids": ["culture"]
+    },
+    {
+      "id": "shadrinsk-local-history-museum",
+      "name": "Шадринский краеведческий музей им. В.П. Бирюкова",
+      "description": "Официальный канал Шадринского краеведческого музея имени В.П. Бирюкова.",
+      "type": "channel",
+      "owner": "МБУ «Шадринский краеведческий музей им. В.П. Бирюкова»",
+      "link": "https://max.ru/id4502012790_gos",
+      "tags": ["Шадринск", "музей", "краеведение", "культура"],
+      "category_ids": ["culture"]
+    },
+    {
+      "id": "shadrinsk-cultural-leisure-association",
+      "name": "Шадринское культурно-досуговое объединение",
+      "description": "Официальный канал Шадринского культурно-досугового объединения.",
+      "type": "channel",
+      "owner": "МАУК «Шадринское культурно-досуговое объединение»",
+      "link": "https://max.ru/id4502032540_gos",
+      "tags": ["Шадринск", "культура", "досуг", "мероприятия"],
+      "category_ids": ["culture"]
+    },
+    {
+      "id": "pushkin-card",
+      "name": "Пушкинская карта",
+      "description": "Бот о возможностях и использовании Пушкинской карты.",
+      "type": "chatbot",
+      "owner": "Пушкинская карта",
+      "link": "https://max.ru/pushkincard_bot",
+      "tags": ["Пушкинская карта", "культура", "молодежь", "мероприятия"],
+      "category_ids": ["culture"],
+      "popular": true,
       "federal": true
     },
     {
-      "id": "work-russia",
-      "name": "Работа России",
-      "description": "Поиск вакансий, размещение резюме и получение информации о программах поддержки занятости.",
+      "id": "education-department",
+      "name": "Департамент образования Курганской области",
+      "description": "Официальный канал Департамента образования и науки Курганской области.",
+      "type": "channel",
+      "owner": "Департамент образования и науки Курганской области",
+      "link": "https://max.ru/donkurgan",
+      "tags": ["образование", "департамент", "школа", "новости"],
+      "category_ids": ["education"],
+      "popular": true
+    },
+    {
+      "id": "shask-schedule",
+      "name": "ШАСК Расписание",
+      "description": "Бот для просмотра расписания ШАСК.",
+      "type": "chatbot",
+      "owner": "ШАСК",
+      "link": "https://max.ru/shask_schedule_bot",
+      "tags": ["ШАСК", "расписание", "колледж", "образование"],
+      "category_ids": ["education"]
+    },
+    {
+      "id": "shask-informer",
+      "name": "ШАСК Информатор",
+      "description": "Информационный бот ШАСК для студентов и абитуриентов.",
+      "type": "chatbot",
+      "owner": "ШАСК",
+      "link": "https://max.ru/shask_info_bot",
+      "tags": ["ШАСК", "информатор", "колледж", "образование"],
+      "category_ids": ["education"]
+    },
+    {
+      "id": "shspu-schedule",
+      "name": "Расписание ШГПУ",
+      "description": "Бот для просмотра расписания Шадринского государственного педагогического университета.",
+      "type": "chatbot",
+      "owner": "ШГПУ",
+      "link": "https://max.ru/rasp_shspu_bot",
+      "tags": ["ШГПУ", "расписание", "университет", "образование"],
+      "category_ids": ["education"]
+    },
+    {
+      "id": "kindergarten-enrollment",
+      "name": "Запись в садик",
+      "description": "Форма подачи заявления на запись ребёнка в детский сад через портал Госуслуг.",
       "type": "site",
-      "owner": "Федеральная служба по труду и занятости",
-      "link": "https://trudvsem.ru",
-      "tags": ["работа", "вакансии", "резюме", "занятость"],
-      "category_ids": ["employment"],
+      "owner": "Госуслуги",
+      "link": "https://www.gosuslugi.ru/600331/1/form",
+      "tags": ["детский сад", "садик", "заявление", "госуслуги"],
+      "category_ids": ["education"],
       "federal": true
     },
     {
-      "id": "bus-schedule",
-      "name": "Расписание транспорта",
-      "description": "Тестовый переход к сервису поиска расписания междугороднего и пригородного транспорта.",
+      "id": "school-enrollment",
+      "name": "Запись в школу",
+      "description": "Сервис выбора школы и подачи заявления на зачисление через портал Госуслуг.",
       "type": "site",
-      "owner": "Тестовый сервис",
-      "link": "https://rasp.yandex.ru",
-      "tags": ["автобус", "расписание", "транспорт", "маршрут"],
-      "category_ids": ["transport"]
+      "owner": "Госуслуги",
+      "link": "https://www.gosuslugi.ru/select/school",
+      "tags": ["школа", "запись", "зачисление", "госуслуги"],
+      "category_ids": ["education"],
+      "federal": true
+    },
+    {
+      "id": "my-school",
+      "name": "Госуслуги «Моя школа»",
+      "description": "Раздел Госуслуг для школьников и родителей: образование, учёба и школьные сервисы.",
+      "type": "site",
+      "owner": "Госуслуги",
+      "link": "https://www.gosuslugi.ru/school",
+      "tags": ["моя школа", "школа", "образование", "госуслуги"],
+      "category_ids": ["education"],
+      "federal": true
+    },
+    {
+      "id": "ege-results",
+      "name": "Результаты ЕГЭ",
+      "description": "Просмотр сведений об образовании и результатов экзаменов в личном кабинете Госуслуг.",
+      "type": "site",
+      "owner": "Госуслуги",
+      "link": "https://lk.gosuslugi.ru/profile/education",
+      "tags": ["ЕГЭ", "экзамены", "результаты", "образование"],
+      "category_ids": ["education"],
+      "federal": true
+    },
+    {
+      "id": "spo-enrollment",
+      "name": "Запись в СПО",
+      "description": "Форма подачи заявления на поступление в организацию среднего профессионального образования.",
+      "type": "site",
+      "owner": "Госуслуги",
+      "link": "https://www.gosuslugi.ru/10171/1/form",
+      "tags": ["СПО", "колледж", "техникум", "поступление"],
+      "category_ids": ["education"],
+      "federal": true
+    },
+    {
+      "id": "university-enrollment",
+      "name": "Запись в ВУЗ",
+      "description": "Сервис подачи заявления на поступление в вуз онлайн через портал Госуслуг.",
+      "type": "site",
+      "owner": "Госуслуги",
+      "link": "https://www.gosuslugi.ru/vuzonline",
+      "tags": ["вуз", "университет", "поступление", "госуслуги"],
+      "category_ids": ["education"],
+      "federal": true
+    },
+    {
+      "id": "shumikha-administration",
+      "name": "Администрация Шумихинского муниципального округа",
+      "description": "Официальный канал администрации Шумихинского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Шумихинского муниципального округа",
+      "link": "https://max.ru/id4524097205_gos",
+      "tags": ["администрация", "Шумиха", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "dalmatovo-administration",
+      "name": "Администрация Далматовского округа",
+      "description": "Официальный канал администрации Далматовского округа.",
+      "type": "channel",
+      "owner": "Администрация Далматовского округа",
+      "link": "https://max.ru/id4500009520_gos",
+      "tags": ["администрация", "Далматово", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "kataysk-administration",
+      "name": "Администрация Катайского муниципального округа",
+      "description": "Официальный канал администрации Катайского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Катайского муниципального округа",
+      "link": "https://max.ru/id4500009496_gos",
+      "tags": ["администрация", "Катайск", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "shadrinsk-district-administration",
+      "name": "Администрация Шадринского муниципального округа",
+      "description": "Официальный канал администрации Шадринского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Шадринского муниципального округа",
+      "link": "https://max.ru/id4500001955_gos",
+      "tags": ["администрация", "Шадринск", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "shatrovo-administration",
+      "name": "Администрация Шатровского муниципального округа",
+      "description": "Официальный канал администрации Шатровского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Шатровского муниципального округа",
+      "link": "https://max.ru/id4508010479_gos",
+      "tags": ["администрация", "Шатрово", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "lebyazhye-administration",
+      "name": "Администрация Лебяжьевского муниципального округа",
+      "description": "Официальный канал администрации Лебяжьевского муниципального округа Курганской области.",
+      "type": "channel",
+      "owner": "Администрация Лебяжьевского муниципального округа Курганской области",
+      "link": "https://max.ru/id4510032543_gos",
+      "tags": ["администрация", "Лебяжье", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "makushino-administration",
+      "name": "Администрация Макушинского муниципального округа",
+      "description": "Официальный канал администрации Макушинского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Макушинского муниципального округа",
+      "link": "https://max.ru/id4513008958_gos",
+      "tags": ["администрация", "Макушино", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "pritobolny-administration",
+      "name": "Администрация Притобольного округа",
+      "description": "Официальный канал администрации Притобольного округа.",
+      "type": "channel",
+      "owner": "Администрация Притобольного округа",
+      "link": "https://max.ru/id4500009792_gos",
+      "tags": ["администрация", "Притобольный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "ketovo-administration",
+      "name": "Администрация Кетовского муниципального округа",
+      "description": "Официальный канал администрации Кетовского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Кетовского муниципального округа",
+      "link": "https://max.ru/id4500004032_gos",
+      "tags": ["администрация", "Кетово", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "almenevo-administration",
+      "name": "Администрация Альменевского муниципального округа",
+      "description": "Официальный канал администрации Альменевского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Альменевского муниципального округа",
+      "link": "https://max.ru/id4524097692_gos",
+      "tags": ["администрация", "Альменево", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "petukhovo-administration",
+      "name": "Администрация Петуховского муниципального округа",
+      "description": "Официальный канал администрации Петуховского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Петуховского муниципального округа",
+      "link": "https://max.ru/id4510032744_gos",
+      "tags": ["администрация", "Петухово", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "safakulevo-administration",
+      "name": "Администрация Сафакулевского МО",
+      "description": "Официальный канал администрации Сафакулевского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Сафакулевского муниципального округа",
+      "link": "https://max.ru/id4500005702_gos",
+      "tags": ["администрация", "Сафакулево", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "tselinnoye-administration",
+      "name": "Администрация Целинного муниципального округа",
+      "description": "Официальный канал администрации Целинного муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Целинного муниципального округа",
+      "link": "https://max.ru/id4524097710_gos",
+      "tags": ["администрация", "Целинное", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "vargashi-administration",
+      "name": "Администрация Варгашинского МО",
+      "description": "Официальный канал администрации Варгашинского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Варгашинского муниципального округа",
+      "link": "https://max.ru/id4500009344_gos",
+      "tags": ["администрация", "Варгаши", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "yurgamysh-administration",
+      "name": "Администрация Юргамышского МО",
+      "description": "Официальный канал администрации Юргамышского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Юргамышского муниципального округа",
+      "link": "https://max.ru/id4500002050_gos",
+      "tags": ["администрация", "Юргамыш", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "shchuchye-administration",
+      "name": "Администрация Щучанского муниципального округа",
+      "description": "Официальный канал администрации Щучанского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Щучанского муниципального округа",
+      "link": "https://max.ru/id4500003455_gos",
+      "tags": ["администрация", "Щучье", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "mokrousovo-administration",
+      "name": "Администрация Мокроусовского МО",
+      "description": "Официальный канал администрации Мокроусовского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Мокроусовского муниципального округа",
+      "link": "https://max.ru/id4500002839_gos",
+      "tags": ["администрация", "Мокроусово", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "zverinogolovskoye-administration",
+      "name": "Администрация Звериноголовского муниципального округа",
+      "description": "Официальный канал администрации Звериноголовского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Звериноголовского муниципального округа",
+      "link": "https://max.ru/id4500003350_gos",
+      "tags": ["администрация", "Звериноголовское", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "chastoozerye-administration",
+      "name": "Администрация Частоозерского МО",
+      "description": "Официальный канал администрации Частоозерского муниципального округа.",
+      "type": "channel",
+      "owner": "Администрация Частоозерского муниципального округа",
+      "link": "https://max.ru/id4500002395_gos",
+      "tags": ["администрация", "Частоозерье", "муниципальный округ"],
+      "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "kurgan-emergency-system",
+      "name": "РСЧС Курганская область",
+      "description": "Официальный канал РСЧС Курганской области с информацией о происшествиях, предупреждениях и безопасности.",
+      "type": "channel",
+      "owner": "РСЧС Курганская область",
+      "link": "https://max.ru/id4501217964_gos",
+      "tags": ["РСЧС", "происшествия", "безопасность", "предупреждения"],
+      "category_ids": ["incidents"],
+      "popular": true
     }
   ],
   "support": {
