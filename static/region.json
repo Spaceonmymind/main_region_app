@@ -2,9 +2,9 @@
   "channels": [],
   "categories": [
     {
-      "id": "health",
-      "name": "Здоровье",
-      "icon": "health.png",
+      "id": "local-administrations",
+      "name": "Местные администрации",
+      "icon": "local-administrations.svg",
       "show_on_main": true
     },
     {
@@ -26,15 +26,15 @@
       "show_on_main": true
     },
     {
+      "id": "health",
+      "name": "Здоровье",
+      "icon": "health.png",
+      "show_on_main": true
+    },
+    {
       "id": "employment",
       "name": "Работа и занятость",
       "icon": "employment.svg"
-    },
-    {
-      "id": "local-administrations",
-      "name": "Местные администрации",
-      "icon": "local-administrations.svg",
-      "show_on_main": true
     },
     {
       "id": "government",
