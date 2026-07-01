@@ -130,6 +130,8 @@ const serveMiniApp = async (request, response, pathname, publicDir) => {
 export const startHttpServer = ({
   port = process.env.PORT,
   publicDir = resolve(process.cwd(), 'public'),
+  onAnalyticsEvent,
+  onWebhookEvent,
 } = {}) => {
   const resolvedPort = parsePort(port);
   const resolvedPublicDir = resolve(publicDir);
@@ -150,6 +152,28 @@ export const startHttpServer = ({
         const event = await readJsonBody(request);
 
         console.log('Получено событие MAX webhook:', JSON.stringify(event));
+        await onWebhookEvent?.(event);
+        sendJson(response, 200, { status: 'ok' });
+      } catch (error) {
+        if (error instanceof Error && error.message === 'PAYLOAD_TOO_LARGE') {
+          sendJson(response, 413, { error: 'Payload too large' });
+          return;
+        }
+
+        sendJson(response, 400, { error: 'Invalid JSON' });
+      }
+      return;
+    }
+
+    if (request.method === 'POST' && url.pathname === '/analytics/event') {
+      try {
+        const event = await readJsonBody(request);
+
+        await onAnalyticsEvent?.({
+          event: event.event,
+          params: event.params,
+          path: event.path,
+        });
         sendJson(response, 200, { status: 'ok' });
       } catch (error) {
         if (error instanceof Error && error.message === 'PAYLOAD_TOO_LARGE') {

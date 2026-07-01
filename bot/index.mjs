@@ -1,10 +1,17 @@
 import { Bot, Keyboard } from '@maxhub/max-bot-api';
 
+import { buildStatsReport, trackBotEvent, trackMiniAppEvent } from './analytics-store.mjs';
 import { startHttpServer } from './http-server.mjs';
 
 const token = process.env.BOT_TOKEN?.trim();
 const miniAppDeeplink = process.env.MINI_APP_DEEPLINK?.trim();
 const legacyMiniAppUrl = process.env.MINI_APP_URL?.trim();
+const adminUserIds = new Set(
+  (process.env.ADMIN_USER_IDS || '')
+    .split(/[,\s]+/)
+    .map((value) => Number(value))
+    .filter((value) => Number.isInteger(value) && value > 0)
+);
 
 if (!token) {
   throw new Error(
@@ -53,14 +60,78 @@ const createReplyOptions = () => {
 
 const sendWelcome = (ctx) => ctx.reply(welcomeText, createReplyOptions());
 
-bot.on('bot_started', sendWelcome);
-bot.command('start', sendWelcome);
+const getUserId = (ctx) => ctx.user?.user_id;
+const getChatId = (ctx) => ctx.chatId;
 
-bot.on('message_created', (ctx) =>
-  ctx.reply(helpText, createReplyOptions())
-);
+const isAdmin = (ctx) => {
+  const userId = getUserId(ctx);
+
+  return Boolean(userId && adminUserIds.has(userId));
+};
+
+bot.on('bot_started', async (ctx) => {
+  await trackBotEvent('bot_started', {
+    userId: getUserId(ctx),
+    chatId: getChatId(ctx),
+  });
+  await sendWelcome(ctx);
+});
+
+bot.command('start', async (ctx) => {
+  await trackBotEvent('start_command', {
+    userId: getUserId(ctx),
+    chatId: getChatId(ctx),
+  });
+  await sendWelcome(ctx);
+});
+
+bot.command('my_id', (ctx) => {
+  const userId = getUserId(ctx);
+
+  return ctx.reply(
+    userId
+      ? `Ваш MAX user_id: ${userId}`
+      : 'Не получилось определить user_id. Попробуйте написать команду в личный чат с ботом.'
+  );
+});
+
+bot.command(['admin_stats', 'stats'], async (ctx) => {
+  if (adminUserIds.size === 0) {
+    const userId = getUserId(ctx);
+
+    return ctx.reply(
+      [
+        'Админы статистики пока не настроены.',
+        '',
+        `Ваш MAX user_id: ${userId ?? 'не определён'}`,
+        'Добавьте его на сервере в .env:',
+        `ADMIN_USER_IDS=${userId ?? '<ваш_user_id>'}`,
+        '',
+        'После этого перезапустите сервис бота.',
+      ].join('\n')
+    );
+  }
+
+  if (!isAdmin(ctx)) {
+    return ctx.reply('Эта команда доступна только администратору статистики.');
+  }
+
+  return ctx.reply(await buildStatsReport());
+});
+
+bot.on('message_created', async (ctx) => {
+  await trackBotEvent('bot_message', {
+    userId: getUserId(ctx),
+    chatId: getChatId(ctx),
+  });
+
+  return ctx.reply(helpText, createReplyOptions());
+});
 
 bot.start();
-startHttpServer();
+startHttpServer({
+  onAnalyticsEvent: trackMiniAppEvent,
+  onWebhookEvent: () => trackBotEvent('webhook_event'),
+});
 
 console.log('Бот «Сервисы Курганской области» запущен');

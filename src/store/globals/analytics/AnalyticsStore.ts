@@ -34,6 +34,7 @@ class AnalyticsStore implements IAnalyticsStore {
       const url = `${location.origin}${path}`;
 
       this._adapters.forEach((adapter) => adapter.sendPage(url));
+      this._sendLocalEvent('page_view', { path });
     } catch (e: unknown) {
       this._rootStore.errorStore.error(e, {
         type: EErrorType.ANALYTICS,
@@ -99,12 +100,34 @@ class AnalyticsStore implements IAnalyticsStore {
   ): void => {
     try {
       this._adapters.forEach((adapter) => adapter.sendEvent(event, params));
+      this._sendLocalEvent(event, params);
     } catch (e: unknown) {
       this._rootStore.errorStore.error(e, {
         type: EErrorType.ANALYTICS,
         extra: 'sendEvent error',
         event,
       });
+    }
+  };
+
+  private readonly _sendLocalEvent = (event: string, params?: Record<string, unknown>): void => {
+    try {
+      if (typeof window === 'undefined') {
+        return;
+      }
+
+      void fetch('/analytics/event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event,
+          params,
+          path: window.location.pathname,
+        }),
+        keepalive: true,
+      }).catch(() => undefined);
+    } catch {
+      // Локальная статистика не должна мешать пользователю пользоваться мини-приложением.
     }
   };
 }
