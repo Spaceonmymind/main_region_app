@@ -21,15 +21,30 @@
     },
     {
       "id": "education",
-      "name": "Образование"
+      "name": "Образование",
+      "icon": "education.svg",
+      "show_on_main": true
+    },
+    {
+      "id": "employment",
+      "name": "Работа и занятость",
+      "icon": "employment.svg"
     },
     {
       "id": "local-administrations",
-      "name": "Местные администрации"
+      "name": "Местные администрации",
+      "icon": "local-administrations.svg",
+      "show_on_main": true
+    },
+    {
+      "id": "government",
+      "name": "Правительство",
+      "icon": "government.svg"
     },
     {
       "id": "incidents",
-      "name": "Происшествия"
+      "name": "Происшествия",
+      "icon": "incidents.svg"
     }
   ],
   "services": [
@@ -249,6 +264,17 @@
       "federal": true
     },
     {
+      "id": "medical-staff-employment-center",
+      "name": "Центр трудоустройства медицинских кадров",
+      "description": "Бот центра трудоустройства медицинских кадров для поиска вакансий и информации о работе в сфере здравоохранения.",
+      "type": "chatbot",
+      "owner": "Центр трудоустройства медицинских кадров",
+      "link": "https://max.ru/miackadr_bot",
+      "tags": ["работа", "занятость", "вакансии", "медицина", "кадры"],
+      "category_ids": ["employment"],
+      "popular": true
+    },
+    {
       "id": "shumikha-administration",
       "name": "Администрация Шумихинского муниципального округа",
       "description": "Официальный канал администрации Шумихинского муниципального округа.",
@@ -437,6 +463,49 @@
       "link": "https://max.ru/id4500002395_gos",
       "tags": ["администрация", "Частоозерье", "муниципальный округ"],
       "category_ids": ["local-administrations"]
+    },
+    {
+      "id": "kurgan-region-government",
+      "name": "Курганская область",
+      "description": "Официальный канал Курганской области в MAX.",
+      "type": "channel",
+      "owner": "Правительство Курганской области",
+      "link": "https://max.ru/kurganskayaobl",
+      "tags": ["Курганская область", "правительство", "регион", "новости"],
+      "category_ids": ["government"],
+      "popular": true
+    },
+    {
+      "id": "kurgan-city",
+      "name": "Город Курган",
+      "description": "Официальный канал города Кургана в MAX.",
+      "type": "channel",
+      "owner": "Администрация города Кургана",
+      "link": "https://max.ru/kurgancityru",
+      "tags": ["Курган", "город", "администрация", "новости"],
+      "category_ids": ["government"],
+      "popular": true
+    },
+    {
+      "id": "vadim-shumkov",
+      "name": "Вадим Шумков",
+      "description": "Официальный канал Вадима Шумкова в MAX.",
+      "type": "channel",
+      "owner": "Вадим Шумков",
+      "link": "https://max.ru/v_shumkov",
+      "tags": ["Вадим Шумков", "губернатор", "Курганская область", "новости"],
+      "category_ids": ["government"],
+      "popular": true
+    },
+    {
+      "id": "andrey-alekseev",
+      "name": "Андрей Алексеев",
+      "description": "Официальный канал Андрея Алексеева в MAX.",
+      "type": "channel",
+      "owner": "Андрей Алексеев",
+      "link": "https://max.ru/id4500000214_gos",
+      "tags": ["Андрей Алексеев", "правительство", "Курганская область"],
+      "category_ids": ["government"]
     },
     {
       "id": "kurgan-emergency-system",
