@@ -12,6 +12,8 @@
 
   cursor: pointer;
   width: 100%;
+  min-width: 0;
+  min-height: 112px;
 
   background: var(--background-surface-card);
 
@@ -26,6 +28,9 @@
   &__name {
     text-align: left;
     color: var(--text-primary);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    hyphens: auto;
 
     @include lineClamp(2);
   }

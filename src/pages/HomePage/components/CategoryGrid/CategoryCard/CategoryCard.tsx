@@ -21,7 +21,7 @@ const CategoryCard: React.FC<TProps> = ({ category, onClick }) => {
   return (
     <div className={s.root} onClick={handleClick}>
       <img src={iconUrl} alt={category.name} className={s['root__icon-image']} />
-      <Typography tag="title" weight="medium" className={s.root__name}>
+      <Typography tag="title" size="small" weight="medium" className={s.root__name}>
         {category.name}
       </Typography>
     </div>
