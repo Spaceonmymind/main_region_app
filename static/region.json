@@ -247,21 +247,6 @@
       "icon": "services/official-sport-office.jpg"
     },
     {
-      "id": "official-housing-inspection",
-      "name": "Госжилинспекция",
-      "description": "Официальный канал Государственной жилищной инспекции Курганской области.",
-      "type": "channel",
-      "owner": "Государственная жилищная инспекция Курганской области",
-      "link": "https://max.ru/id4501085027_gos",
-      "tags": [
-        "жкх",
-        "жилищная инспекция",
-        "дом",
-        "обращения"
-      ],
-      "icon": "services/housing-inspection.jpg"
-    },
-    {
       "id": "official-mfc",
       "name": "МФЦ Курганской области",
       "description": "Официальный канал МФЦ Курганской области.",
