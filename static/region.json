@@ -644,7 +644,8 @@
       "category_ids": [
         "education"
       ],
-      "federal": true
+      "federal": true,
+      "icon": "gosusligi-logo.png"
     },
     {
       "id": "school-enrollment",
@@ -662,7 +663,8 @@
       "category_ids": [
         "education"
       ],
-      "federal": true
+      "federal": true,
+      "icon": "gosusligi-logo.png"
     },
     {
       "id": "my-school",
@@ -680,7 +682,8 @@
       "category_ids": [
         "education"
       ],
-      "federal": true
+      "federal": true,
+      "icon": "gosusligi-logo.png"
     },
     {
       "id": "ege-results",
@@ -698,7 +701,8 @@
       "category_ids": [
         "education"
       ],
-      "federal": true
+      "federal": true,
+      "icon": "gosusligi-logo.png"
     },
     {
       "id": "spo-enrollment",
@@ -716,7 +720,8 @@
       "category_ids": [
         "education"
       ],
-      "federal": true
+      "federal": true,
+      "icon": "gosusligi-logo.png"
     },
     {
       "id": "university-enrollment",
@@ -734,7 +739,8 @@
       "category_ids": [
         "education"
       ],
-      "federal": true
+      "federal": true,
+      "icon": "gosusligi-logo.png"
     },
     {
       "id": "medical-staff-employment-center",
