@@ -32,6 +32,11 @@
       "show_on_main": true
     },
     {
+      "id": "gosuslugi",
+      "name": "Госуслуги",
+      "icon": "gosuslugi.svg"
+    },
+    {
       "id": "employment",
       "name": "Работа и занятость",
       "icon": "employment.svg"
@@ -272,6 +277,28 @@
       "link": "https://max.ru/miackadr_bot",
       "tags": ["работа", "занятость", "вакансии", "медицина", "кадры"],
       "category_ids": ["employment"],
+      "popular": true
+    },
+    {
+      "id": "mfc-kurgan",
+      "name": "Проверить статус дела в МФЦ / записаться на прием в МФЦ",
+      "description": "Бот МФЦ Курганской области для проверки статуса дела и записи на приём.",
+      "type": "chatbot",
+      "owner": "МФЦ Курганской области",
+      "link": "https://max.ru/mfc_kurgan_max_bot",
+      "tags": ["МФЦ", "госуслуги", "статус дела", "запись", "прием"],
+      "category_ids": ["gosuslugi"],
+      "popular": true
+    },
+    {
+      "id": "zags-kurganobl",
+      "name": "Чат-бот органов ЗАГС Курганской области",
+      "description": "Бот органов ЗАГС Курганской области для получения информации и решения вопросов по услугам ЗАГС.",
+      "type": "chatbot",
+      "owner": "Органы ЗАГС Курганской области",
+      "link": "https://max.ru/zags_kurganobl_bot",
+      "tags": ["ЗАГС", "госуслуги", "семья", "документы", "Курганская область"],
+      "category_ids": ["gosuslugi"],
       "popular": true
     },
     {
